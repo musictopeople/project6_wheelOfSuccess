@@ -54,3 +54,5 @@ button[i].addEventListener(`click`, () => {
     }
 });
 }
+
+// ^^having trouble with the above
