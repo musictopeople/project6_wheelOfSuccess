@@ -46,6 +46,9 @@ function checkLetter(x) {
     if (x === checkLi[i].textContent) {
     checkLi[i].className = `show`;
     }
+    else {
+    null;
+    }
 }
 } 
 
@@ -55,10 +58,15 @@ qwerty.addEventListener(`click`, (e) => {
 for (let i = 0; i < button.length; i++ ) {
 if (e.target === button[i])    {
 checkLetter(button[i].textContent);
-
 }
 }
 });
 
+document.addEventListener(`keyup`, (e) => {
+let letter = e.key;
+checkLetter(letter);
+});
 
 
+
+ 
