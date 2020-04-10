@@ -25,7 +25,7 @@ function getRandomPhrasesAsArray() {
 }
 
 function addPhraseToDisplay(arr) {
-    for (let i = 0; i <= arr.length; i += 1) {
+    for (let i = 0; i < arr.length; i += 1) {
         const place = document.getElementById(`phrase`);
         const li = document.createElement(`li`)
             if (arr[i] !== ` `) {
@@ -40,19 +40,25 @@ function addPhraseToDisplay(arr) {
             } 
 }
 
-addPhraseToDisplay(getRandomPhrasesAsArray());
-
-for (let i = 0; i <= button.length; i+= 1) {
-button[i].addEventListener(`click`, () => {
-    const pressedButton = button[i].textContent;
+function checkLetter(x) {
     let checkLi = document.getElementsByClassName(`letter`);
-    for (let i = 0; i <= checkLi.length; i += 1) {
-    let test = checkLi[i].textContent;
-    if (pressedButton === test) {
+    for (let i = 0; i < checkLi.length; i++) {
+    if (x === checkLi[i].textContent) {
     checkLi[i].className = `show`;
     }
-    }
-});
 }
+} 
 
-// ^^having trouble with the above
+addPhraseToDisplay(getRandomPhrasesAsArray());
+
+qwerty.addEventListener(`click`, (e) => {
+for (let i = 0; i < button.length; i++ ) {
+if (e.target === button[i])    {
+checkLetter(button[i].textContent);
+
+}
+}
+});
+
+
+
