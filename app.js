@@ -62,6 +62,7 @@ if (missed > 4) {
     let space = document.getElementsByClassName(`space`);
     let phraseLength = letter.length + space.length;
     for (let i = 0; i < phraseLength; i++) {
+    phraseUl.innerHTML = ``;
     phraseUl.removeChild(phraseUl.children[i]);
     }
     // ^^ what am I doing wrong here???  ^^ Thanks for any insight you have! : )
