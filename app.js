@@ -75,13 +75,15 @@ if (x === letterFound[i].textContent) {
 function reStartGame() {
     phraseUl.innerHTML = ``;
     heartPoints.innerHTML = ``;
-    for (let i = 0; i < chosen.length; i++ ) {
+    for (let i = 0; i < button.length; i++ ) {
         console.log(chosen[i]);
-        chosen[i].classList.remove(`chosen`);
+        if (button[i].className === `chosen`) {
+        button[i].classList.remove(`chosen`);
+        }
         } 
 }
 
-// ^^ work on your remove chosen function...something is up
+// ^^ work on your remove chosen function...something is up..still got a straggler
 
 function checkWin() {
 if (missed > 4) {
