@@ -9,6 +9,7 @@
     const phraseUl = document.getElementById(`phraseUl`);
     const message = document.createElement(`h3`);
     let heartChild = 5;
+    const ul = document.createElement(`ul`);
     let newLi = document.createElement(`li`);
     let newImg = document.createElement(`img`);
     let letterFound = document.getElementsByClassName(`letter`);    
@@ -28,25 +29,47 @@
 function getRandomPhrasesAsArray() {
     const getPhrase = Math.floor(Math.random() * 6);
     const currentPhrase = phrases[getPhrase].split(``);
+    // `` or ` `
     return currentPhrase;
 }
 
+
+/* function addPhraseToDisplay(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        const letters = arr[i].split(``);
+        console.log(letters);
+        phraseUl.appendChild(ul);
+    for (let i = 0; i < letters.length; i++) {
+        newLi.className = `letter`;
+        newLi.textContent = letters[i];
+        ul.appendChild(newLi);
+    }
+        console.log(ul);
+    /* for (let i = 0; i < arr.split(``).length; i++)
+        newLi.className = `letter`;
+        newLi.textContent = arr[i];
+        ul.appendChild(newLi); 
+    } 
+    phraseLength = letterFound.length;
+} */
+
 function addPhraseToDisplay(arr) {
-for (let i = 0; i < arr.length; i += 1) {
-    const li = document.createElement(`li`);
-if (arr[i] !== ` `) {
-    li.className = `letter`;
-    li.textContent = arr[i];
-}    else {
-    li.className = `space`;
-    li.textContent = arr[i];  
-}
-    phraseUl.appendChild(li);
-    console.log(li);
-} 
-phraseLength = letterFound.length
-console.log(phraseLength);
-}
+    for (let i = 0; i < arr.length; i += 1) {
+        const li = document.createElement(`li`);
+    if (arr[i] !== ` `) {
+        li.className = `letter`;
+        li.textContent = arr[i];
+    }    else {
+        li.className = `space`;
+        li.textContent = arr[i];  
+    }
+        phraseUl.appendChild(li);
+        console.log(li);
+    }
+     
+    phraseLength = letterFound.length;
+    }
+
 
 function checkLetter(x) {
     let searchSuccess = false;
@@ -83,21 +106,28 @@ function reStartGame() {
         } 
 }
 
-// ^^ work on your remove chosen function...something is up..still got a straggler
-
 function checkWin() {
 if (missed > 4) {
     reStartGame();
-    overlay.classList.remove(`start`);
-    overlay.classList.add(`lose`);
+    if (overlay.className === `start`) {
+    overlay.classList.replace(`start`, `lose`);
+    }
+    if (overlay.className === `win`) {
+    overlay.classList.replace(`win`, `lose`);    
+    }
     overlay.appendChild(message);
     message.textContent = `Sorry, you lose!`;
     overlay.style.display = `flex`;
 
 } if (amountOfLettersFound === phraseLength) {
     reStartGame();
-    overlay.classList.remove(`start`);
-    overlay.classList.add(`win`);
+    if (overlay.className === `start`) {
+        overlay.classList.replace(`start`, `win`);
+        }
+    if (overlay.className === `lose`) {
+        overlay.classList.replace(`lose`, `win`);    
+        }
+
     overlay.appendChild(message);
     message.textContent = `You win!!!`;
     overlay.style.display = `flex`;
@@ -139,34 +169,20 @@ if (e.target.className === `chosen`) {
     return null;
 }
 else if (e.target === button[i])    {
+    e.target.classList.add(`chosen`);
     checkLetter(button[i].textContent);
     checkWin();
-    e.target.classList.add(`chosen`);
 } 
 }
 });
 
 document.addEventListener(`keyup`, (e) => {
-    for (let i = 0; i < button.length; i++ ) {
-    if (button[i].className === `chosen`) {
-    return null;
-    }
-    }
-// ^^ this doesn't work but maybe something like this???  I think you need to rewrite it in the function.
-
     let letter = e.key;
-    checkLetter(letter);
-    checkWin();
     for (let i = 0; i < button.length; i++) {
-    if (letter === button[i].textContent) {
+    if (letter === button[i].textContent && button[i].className !== `chosen`) {
+    checkLetter(letter);
     button[i].classList.add(`chosen`);
-    } else {
-    null;
-    }
+    checkWin();
+    } 
     }
 });
-
-// ^^ how would you add the null return to the keyup function...?
-
-
- 
