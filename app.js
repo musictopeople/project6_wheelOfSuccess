@@ -9,7 +9,6 @@
     const phraseUl = document.getElementById(`phraseUl`);
     const message = document.createElement(`h3`);
     let heartChild = 5;
-    const ul = document.createElement(`ul`);
     let newLi = document.createElement(`li`);
     let newImg = document.createElement(`img`);
     let letterFound = document.getElementsByClassName(`letter`);    
@@ -33,27 +32,7 @@ function getRandomPhrasesAsArray() {
     return currentPhrase;
 }
 
-
-/* function addPhraseToDisplay(arr) {
-    for (let i = 0; i < arr.length; i++) {
-        const letters = arr[i].split(``);
-        console.log(letters);
-        phraseUl.appendChild(ul);
-    for (let i = 0; i < letters.length; i++) {
-        newLi.className = `letter`;
-        newLi.textContent = letters[i];
-        ul.appendChild(newLi);
-    }
-        console.log(ul);
-    /* for (let i = 0; i < arr.split(``).length; i++)
-        newLi.className = `letter`;
-        newLi.textContent = arr[i];
-        ul.appendChild(newLi); 
-    } 
-    phraseLength = letterFound.length;
-} */
-
-function addPhraseToDisplay(arr) {
+  function addPhraseToDisplay(arr) {
     for (let i = 0; i < arr.length; i += 1) {
         const li = document.createElement(`li`);
     if (arr[i] !== ` `) {
@@ -68,7 +47,7 @@ function addPhraseToDisplay(arr) {
     }
      
     phraseLength = letterFound.length;
-    }
+    } 
 
 
 function checkLetter(x) {
