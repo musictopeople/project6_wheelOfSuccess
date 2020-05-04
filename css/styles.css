@@ -27,7 +27,6 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
-  max-width: 1080px;
 }
 
 li, ol, ul {
@@ -97,6 +96,7 @@ button {
 
 .show {
   color: #000;
+  transition: background-color, 1.5s, ease-in, 1s;
   background-color: #76CE82;
 }
 
